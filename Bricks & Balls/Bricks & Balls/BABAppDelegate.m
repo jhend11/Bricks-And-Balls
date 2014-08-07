@@ -7,14 +7,19 @@
 //
 
 #import "BABAppDelegate.h"
+#import "BABGameBoardVC.h"
 
 @implementation BABAppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[BABGameBoardVC alloc]initWithNibName:nil bundle:nil];
+
+    
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MatrixMania-b"]];
     [self.window makeKeyAndVisible];
     return YES;
 }
