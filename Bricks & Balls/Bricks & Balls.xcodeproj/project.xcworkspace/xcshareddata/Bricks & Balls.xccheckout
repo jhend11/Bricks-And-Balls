@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>842C4470-C635-4009-8401-9257A44C7E6B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Bricks &amp; Balls</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>22FDA50F-E86D-4593-A50D-6E72FC652B92</key>
+		<string>https://github.com/jhend11/Bricks-And-Balls.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Bricks &amp; Balls/Bricks &amp; Balls.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>22FDA50F-E86D-4593-A50D-6E72FC652B92</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jhend11/Bricks-And-Balls.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>22FDA50F-E86D-4593-A50D-6E72FC652B92</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22FDA50F-E86D-4593-A50D-6E72FC652B92</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Bricks-And-Balls</string>
+		</dict>
+	</array>
+</dict>
+</plist>

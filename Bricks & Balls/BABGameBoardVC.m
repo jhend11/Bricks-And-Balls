@@ -8,12 +8,7 @@
 
 #import "BABGameBoardVC.h"
 #import "BABHeaderVeiw.h"
-
-// when gameover clear bricks and show start button
-// create new class called "BABLevelData" as a subclass of NSObject
-// make a method that will drop a uiview (gravity) from a broken brick like a powerup
-//listen for it to collide with paddle
-//randomly change size of paddle when powerup hit
+#import "BABLevelData.h"
 
 
 @interface BABGameBoardVC ()<UICollisionBehaviorDelegate>
@@ -28,6 +23,10 @@
     UIDynamicItemBehavior * powerupBehavior;
     UICollisionBehavior * powerupCollision;
     UIView * powerup;
+    UIView * powerup1;
+    UIView * powerup2;
+    UIView * powerup3;
+    UIView * powerup4;
     UICollisionBehavior * collisionBehavior;
     UIView * ball;
     UIGravityBehavior * gravityBehavior;
@@ -58,7 +57,6 @@
         [self.view addSubview:headerView];
         headerView.lives = 3;
         headerView.score = 0;
-        
         
         
         animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
@@ -108,24 +106,73 @@
     }
     return self;
 }
+
 -(void)powerups:(UIView*)brick
 {
+    // // create 5 different types of power ups (paddle size big, paddle size small, multi ball, ball size big, ball size small) - the power ups should look different
+    int random = arc4random_uniform(10);
+    
+    if (random == 2)
+    {
     powerup = [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y, 40, 40)];
     powerup.layer.cornerRadius = 20;
-    powerup.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shape"]];
+    powerup.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"plank"]];
     [self.view addSubview:powerup];
-    
     [powerupCollision addItem:powerup];
     [powerupCollision addItem:paddle];
-    
     [gravityBehavior addItem:powerup];
+    }
+    if (random == 3)
+    {
+        powerup1 = [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y, 20, 20)];
+        powerup1.layer.cornerRadius = 50;
+        powerup1.backgroundColor = [UIColor redColor];
+//        powerup1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"plank"]];
+        [self.view addSubview:powerup1];
+        [powerupCollision addItem:powerup1];
+        [powerupCollision addItem:paddle];
+        [gravityBehavior addItem:powerup1];
+    }
+    if (random == 4)
+    {
+        powerup2 = [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y, 20, 20)];
+        powerup2.layer.cornerRadius = 50;
+        powerup2.backgroundColor = [UIColor purpleColor];
+        //        powerup1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"plank"]];
+        [self.view addSubview:powerup2];
+        [powerupCollision addItem:powerup2];
+        [powerupCollision addItem:paddle];
+        [gravityBehavior addItem:powerup2];
+    }
+    if (random == 5)
+    {
+        powerup3 = [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y, 20, 20)];
+        powerup3.layer.cornerRadius = 50;
+        powerup3.backgroundColor = [UIColor whiteColor];
+        //        powerup1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"plank"]];
+        [self.view addSubview:powerup3];
+        [powerupCollision addItem:powerup3];
+        [powerupCollision addItem:paddle];
+        [gravityBehavior addItem:powerup3];
+    }
+    if (random == 6)
+    {
+        powerup4 = [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y, 20, 20)];
+        powerup4.layer.cornerRadius = 50;
+        powerup4.backgroundColor = [UIColor magentaColor];
+        //        powerup1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"plank"]];
+        [self.view addSubview:powerup4];
+        [powerupCollision addItem:powerup4];
+        [powerupCollision addItem:paddle];
+        [gravityBehavior addItem:powerup4];
+    }
 }
 
 -(void)resetBricks
 {
     
-    int colCount = 7;
-    int rowCount = 4;
+    int colCount = [[[BABLevelData mainData] levelInfo][@"cols"]intValue];
+    int rowCount = [[[BABLevelData mainData] levelInfo][@"rows"]intValue];
     int brickSpacing = 8;
     
     for (int col = 0 ; col < colCount; col++)
@@ -254,6 +301,9 @@
         } else {
             
             [self showStartButton];
+            [BABLevelData mainData].currentLevel = 0;
+
+            
         }
         
     }
@@ -269,13 +319,10 @@
             [gravityBehavior addItem:brick];
             [bricks removeObjectIdenticalTo:brick];
             
+    
+            [self powerups:(UIView*)brick];
             
-            int random = arc4random_uniform(8);
-            if (random == 2)
-            {
-                [self powerups:(UIView*)brick];
-                
-            }
+            
             
             
             headerView.score++;
@@ -289,6 +336,7 @@
             }];
         }
     }
+   
     
     if ([item1 isEqual:powerup] || [item2 isEqual:powerup])
     {
@@ -302,10 +350,94 @@
         {
             CGRect frame = paddle.frame;
             
-            frame.size.width = arc4random_uniform(100) + 40;
+            frame.size.width = 150;
             
             paddle.frame = frame;
         }
+    }
+    if ([item1 isEqual:powerup1] || [item2 isEqual:powerup1])
+    {
+        [powerupCollision removeItem:powerup1];
+        
+        [powerup1 removeFromSuperview];
+        
+        powerup1 = nil;
+        
+        if (powerup1 == nil)
+        {
+            CGRect frame = paddle.frame;
+            
+            frame.size.width = 40;
+            
+            paddle.frame = frame;
+        }
+    }
+    if ([item1 isEqual:powerup2] || [item2 isEqual:powerup2])
+    {
+        [powerupCollision removeItem:powerup2];
+        
+        [powerup2 removeFromSuperview];
+        
+        powerup2 = nil;
+        
+        if (powerup2 == nil)
+        {
+            ball = [[UIView alloc] initWithFrame:CGRectMake((paddle.center.x),SCREEN_HEIGHT - 50, 20,20)];
+            ball.layer.cornerRadius = ball.frame.size.width / 2.0;
+            ball.backgroundColor = [UIColor purpleColor];
+            [self.view addSubview:ball];
+            [collisionBehavior addItem:ball];
+            UIPushBehavior * pushBehavior = [[UIPushBehavior alloc]initWithItems:@[ball] mode:UIPushBehaviorModeInstantaneous];
+            pushBehavior.pushDirection = CGVectorMake(0.08, - 0.08);
+            [animator addBehavior:pushBehavior];
+            [ballItemBehavior addItem:ball];
+        }
+    }
+    if ([item1 isEqual:powerup3] || [item2 isEqual:powerup3])
+    {
+        [powerupCollision removeItem:powerup3];
+        
+        [powerup3 removeFromSuperview];
+        
+        powerup3 = nil;
+        
+        if (powerup3 == nil)
+        {
+            CGRect frame = ball.frame;
+            
+            frame.size.width = 10;
+            frame.size.height = 10;
+            ball.layer.cornerRadius = 5;
+            
+            ball.frame = frame;
+        }
+    }
+    if ([item1 isEqual:powerup4] || [item2 isEqual:powerup4])
+    {
+        [powerupCollision removeItem:powerup4];
+        
+        [powerup4 removeFromSuperview];
+        
+        powerup4 = nil;
+        
+        if (powerup4 == nil)
+        {
+            CGRect frame = ball.frame;
+            
+            frame.size.width = 80;
+            frame.size.height = 80;
+            ball.layer.cornerRadius = 40;
+
+            ball.frame = frame;
+        }
+    }
+    
+    if (bricks.count == 0)
+    {
+        [collisionBehavior removeItem:ball];
+        [ball removeFromSuperview];
+        [BABLevelData mainData].currentLevel++;
+        [self showStartButton];
     }
     
 }
@@ -328,7 +460,7 @@
     self.ballPushed = YES;
     [collisionBehavior addItem:ball];
     UIPushBehavior * pushBehavior = [[UIPushBehavior alloc]initWithItems:@[ball] mode:UIPushBehaviorModeInstantaneous];
-    pushBehavior.pushDirection = CGVectorMake(0.1, - 0.1);
+    pushBehavior.pushDirection = CGVectorMake(0.08, - 0.08);
     [animator addBehavior:pushBehavior];
     [ballItemBehavior addItem:ball];
     

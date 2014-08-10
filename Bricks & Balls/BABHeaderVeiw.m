@@ -29,6 +29,7 @@
         scoreLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:scoreLabel];
         
+        
         self.lives = 3;
         self.score = 0;
     }

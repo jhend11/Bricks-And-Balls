@@ -26,6 +26,7 @@
 		B466A3D519941F96000FFC71 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = B466A3D419941F96000FFC71 /* brick.png */; };
 		B466A3D719942927000FFC71 /* powerup1.png in Resources */ = {isa = PBXBuildFile; fileRef = B466A3D619942927000FFC71 /* powerup1.png */; };
 		B466A3D919942F21000FFC71 /* Shape.png in Resources */ = {isa = PBXBuildFile; fileRef = B466A3D819942F21000FFC71 /* Shape.png */; };
+		B466A3DD199506E8000FFC71 /* BABLevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = B466A3DC199506E8000FFC71 /* BABLevelData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		B466A3D419941F96000FFC71 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
 		B466A3D619942927000FFC71 /* powerup1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup1.png; sourceTree = "<group>"; };
 		B466A3D819942F21000FFC71 /* Shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shape.png; sourceTree = "<group>"; };
+		B466A3DB199506E8000FFC71 /* BABLevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABLevelData.h; sourceTree = "<group>"; };
+		B466A3DC199506E8000FFC71 /* BABLevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABLevelData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +96,10 @@
 		B466A34E19926230000FFC71 = {
 			isa = PBXGroup;
 			children = (
-				B466A3CF1993E5F7000FFC71 /* Pics */,
+				B466A3DA199506BC000FFC71 /* Models */,
 				B466A3891992628F000FFC71 /* Controllers */,
 				B466A36019926230000FFC71 /* Bricks & Balls */,
+				B466A3CF1993E5F7000FFC71 /* Pics */,
 				B466A37919926230000FFC71 /* Bricks & BallsTests */,
 				B466A35919926230000FFC71 /* Frameworks */,
 				B466A35819926230000FFC71 /* Products */,
@@ -191,6 +195,15 @@
 				B466A3D419941F96000FFC71 /* brick.png */,
 			);
 			name = Pics;
+			sourceTree = "<group>";
+		};
+		B466A3DA199506BC000FFC71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B466A3DB199506E8000FFC71 /* BABLevelData.h */,
+				B466A3DC199506E8000FFC71 /* BABLevelData.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B466A3DD199506E8000FFC71 /* BABLevelData.m in Sources */,
 				B466A36B19926230000FFC71 /* BABAppDelegate.m in Sources */,
 				B466A36719926230000FFC71 /* main.m in Sources */,
 				B466A38C199262C4000FFC71 /* BABGameBoardVC.m in Sources */,

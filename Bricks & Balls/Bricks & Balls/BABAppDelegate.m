@@ -16,10 +16,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[BABGameBoardVC alloc]initWithNibName:nil bundle:nil];
-
+    self.window.rootViewController = [[BABGameBoardVC alloc]initWithNibName:nil bundle:nil];    
     
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MatrixMania-b"]];
+
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
