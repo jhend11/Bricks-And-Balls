@@ -358,7 +358,7 @@
     if ([item1 isEqual:powerup1] || [item2 isEqual:powerup1])
     {
         [powerupCollision removeItem:powerup1];
-        
+        [collisionBehavior removeItem:paddle];
         [powerup1 removeFromSuperview];
         
         powerup1 = nil;
@@ -371,6 +371,7 @@
             
             paddle.frame = frame;
         }
+        [collisionBehavior addItem:paddle];
     }
     if ([item1 isEqual:powerup2] || [item2 isEqual:powerup2])
     {

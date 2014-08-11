@@ -7,6 +7,7 @@
 //
 
 #import "BABHeaderVeiw.h"
+#import "BABLevelData.h"
 
 @implementation BABHeaderVeiw
 {
@@ -38,6 +39,7 @@
 -(void)setScore:(int)score
 {
     _score = score;
+    if ([BABLevelData mainData].topScore < score) [BABLevelData mainData].topScore = score;
     scoreLabel.text = [NSString stringWithFormat:@"Score : %d", score];
 }
 
